@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+mapper 用于定义一个映射配置文件的根节点
+namespace属性用来配置命名空间，主要进行session级别的缓存管理
+命名空间默认情况下，使用我们当前操作的实体类的全路径
+parameterType 值表示Mapper对应方法的传参类型，
+resultMap 值则对应了Mapper表示的返回值类型或者返回结果集的元素类型。
+-->
+<mapper namespace="com.hyx.dao.StudentMapper">
+    <select id="studentAll" resultType="com.hyx.entity.Student">
+    select * from mytable
+    </select>
+
+</mapper>

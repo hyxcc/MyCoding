@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置的目标类-->
+    <bean id="userDao" class="com.hyx.dao.demo1.impl.UserDaoImpl"/>
+    <!--配置的前置通知类型-->
+    <bean id="myBeforeAdvice" class="com.hyx.dao.demo1.impl.MyBeforeAdvice"/>
+    <!--Spring AOP 产生的代理类-->
+    <bean id="studentDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--配置目标类-->
+        <property name="target" ref="userDao"/>
+        <!--实现的接口-->
+        <property name="proxyInterfaces" value="com.hyx.dao.demo1.UserDao"/>
+        <!--采用拦截的名称-->
+        <!--其他的一些属性：
+            -proxyTargetClass：是否对类代理而不是接口，设置为true时，使用CGLib代理
+            -interceptorNames:需要织入目标的Advice
+            -singleton：返回代理是否为单实例，默认为单单例
+            -optimize：当设置为true时，强制使用CGLib
+        -->
+        <property name="singleton" value="true"/>
+        <property name="interceptorNames" value="myBeforeAdvice"/>
+    </bean>
+
+</beans>

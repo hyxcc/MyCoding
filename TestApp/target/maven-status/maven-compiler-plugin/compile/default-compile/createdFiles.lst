@@ -1,0 +1,4 @@
+com\hyx\dao\StudentDao.class
+com\hyx\entity\Student.class
+com\hyx\service\Impl\StudentServiceImpl.class
+com\hyx\service\StudentService.class
